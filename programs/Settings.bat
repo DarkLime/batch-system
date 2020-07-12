@@ -65,10 +65,12 @@ echo Windows 10
 echo Settings CLI
 echo.
 echo 1. Network
+echo 2. BatchSystem
 echo.
 choice /C 1 /N
 set option=%ERRORLEVEL%
 if %option% equ 1 goto network
+if %option% equ 2 goto bs
 echo Choice is not valid.
 pause
 goto menu
@@ -239,3 +241,50 @@ C:\ProgramData\Microsoft\Windows\WLANReport\WLAN-report-latest.html
 echo Done!
 pause
 goto network
+
+:bs
+cls
+echo BatchSystem settings
+title BatchSystem settings
+echo.
+echo 1- About
+echo 2- Developers
+echo 3- Back
+choice /c 123 /n
+set bs_choice=%ERRORLEVEL%
+if %bs_choice% equ 1 goto bs_about
+if %bs_choice% equ 2 goto bs_devs
+if %bs_choice% equ 3 goto menu
+echo Choice not valid.
+pause
+goto bs
+
+:bs_about
+cls
+echo About
+echo.
+echo   BATCH SYSTEM
+echo   by  Cyanic76
+echo.
+echo Branch:    master
+echo Version:   prerelease
+echo Build:		0
+echo.
+pause
+goto bs
+
+:bs_devs
+cls
+echo BATCH SYSTEM
+echo.
+echo Contribute on GitHub
+echo https://github.com/Cyanic76/batch-system
+echo.
+echo License:
+echo GNU GPL v3
+echo.
+echo Software type:
+echo OSS - Open Source Software
+echo.
+pause
+goto bs
