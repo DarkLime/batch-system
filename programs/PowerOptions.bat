@@ -60,7 +60,7 @@ if %option% equ 3 goto sleep
 if %option% equ 4 goto reboot
 if %option% equ 5 goto lk
 if %option% equ 6 goto about
-if %option% equ 7 goto exit
+if %option% equ 7 goto exit2
 echo Choice is not valid.
 pause
 goto menu
@@ -137,7 +137,7 @@ echo WIN10 POWER OPTIONS CLI
 echo Power options made the easy way.
 echo.
 echo By Cyanic76 - is.gd/cyanic
-echo Version 1.0.2
+echo Version 1.1
 echo OSS: https://github.com/Cyanic76/power-options-cli
 echo.
 pause
@@ -145,5 +145,14 @@ goto menu
 
 :exit
 echo Exiting
-del /f /a C:\Users\%USERNAME%\Desktop\NULL
+echo Reason=Exiting
+del /f /a NULL
+exit
+
+:exit2
+echo Exiting
+echo Reason=Going back to Main
+del /f /a NULL
+cd ..
+BatchSystem.bat
 exit
