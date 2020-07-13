@@ -206,10 +206,12 @@ echo Hotspot settings
 echo.
 echo 1- Edit name
 echo 2- Edit password
-choice /c 12 /n
+echo 3- Back
+choice /c 123 /n
 set network_hotspotset_value1=%ERRORLEVEL%
 if %network_hotspotset_value1% equ 1 goto network_hotspotset_name
 if %network_hotspotset_value1% equ 2 goto network_hotspotset_pw
+if %network_hotspotset_value1% equ 3 goto network
 echo Choice is not valid.
 pause
 goto network_hotspotset
