@@ -137,8 +137,6 @@ echo WIN10 POWER OPTIONS CLI
 echo Power options made the easy way.
 echo.
 echo By Cyanic76 - is.gd/cyanic
-echo Version 1.1
-echo OSS: https://github.com/Cyanic76/power-options-cli
 echo.
 pause
 goto menu
