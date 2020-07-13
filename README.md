@@ -2,12 +2,13 @@
 A system being developed on Batch (Command Prompt)
 
 ## Features
-As of `p-20200712-1` release, Batch System includes this:
+As of `p-20200713-1` release, Batch System includes this:
 
 - A [start menu](https://github.com/Cyanic76/batch-system/blob/master/BatchSystem.bat)
 - [Power options](https://github.com/Cyanic76/batch-system/blob/master/files/PowerOptions.bat)
-- [Network settings](https://github.com/Cyanic76/batch-system/blob/master/files/Settings.bat#L78)
+- Network, time/date/region settings
 - [Settings menu](https://github.com/Cyanic76/batch-system/blob/master/files/Settings.bat)
+- View info about your computer hardware & software
 
 More will be implemented in the future.
 
