@@ -17,10 +17,10 @@ echo.
 echo.
 echo.
 echo.
-echo         Settings
+echo             Settings
 echo.
 echo.
-echo.       Please wait
+echo.          Please  wait
 powershell -Command "Start-Process Settings.bat -Verb RunAs"
 goto check2
 
@@ -66,11 +66,13 @@ echo Settings CLI
 echo.
 echo 1. Network
 echo 2. BatchSystem
+echo 3. About Windows
 echo.
-choice /C 1 /N
+choice /C 123 /N
 set option=%ERRORLEVEL%
 if %option% equ 1 goto network
 if %option% equ 2 goto bs
+if %option% equ 3 goto windows
 echo Choice is not valid.
 pause
 goto menu
@@ -87,7 +89,7 @@ echo 4- WiFi properties
 echo 5- WiFi hotspot settings
 echo 6- Generate a report
 echo 7- Back
-choice /C 123456 /N
+choice /C 1234567 /N
 set opt=%ERRORLEVEL%
 if %opt% equ 1 goto network_connect
 if %opt% equ 2 goto network_nscm
@@ -270,7 +272,7 @@ echo   by  Cyanic76
 echo.
 echo Branch:    master
 echo Version:   prerelease
-echo Build:		0
+echo Build:	    0
 echo.
 pause
 goto bs
@@ -290,3 +292,71 @@ echo OSS - Open Source Software
 echo.
 pause
 goto bs
+
+:windows
+cls
+echo ABOUT
+echo.
+echo 1- RAM Information
+echo 2- OS Information
+echo 3- Back
+echo.
+choice /c 123 /n
+set win=%ERRORLEVEL%
+if %win% equ 1 goto windows_ram
+if %win% equ 2 goto windows_os
+if %win% equ 3 goto menu
+echo Choice is not valid.
+pause
+goto windows
+
+:windows_ram
+cls
+echo ABOUT/RAM
+echo.
+echo 1- Complete info
+echo 2- Simplified info
+echo 3- Back
+choice /c 123 /n
+set ram_choice=%ERRORLEVEL%
+if %ram_choice% equ 1 goto windows_ram_complete
+if %ram_choice% equ 2 goto windows_ram_simplified
+if %ram_choice% equ 3 goto windows
+echo Choice is not valid.
+pause
+goto windows
+
+:windows_ram_complete
+cls
+mode con cols=80 lines=14
+echo Look below.
+echo The capacity is in bytes.
+echo.
+wmic MEMORYCHIP get BankLabel, DeviceLocator, MemoryType, TypeDetail, Capacity, Speed
+pause
+mode con cols=50 lines=14
+goto windows_ram
+
+:windows_ram_simplified
+cls
+mode con cols=80 lines=14
+echo Look below.
+echo The capacity is in bytes.
+echo.
+wmic MEMORYCHIP get BankLabel,Capacity
+pause
+mode con cols=50 lines=14
+goto windows_ram
+
+:windows_os
+cls
+echo ABOUT/Operating System
+echo.
+echo This setting part is not available
+echo on this release.
+echo.
+echo Go to GitHub to get the latest release.
+echo Cyanic76/batch-system
+echo.
+pause
+goto windows
