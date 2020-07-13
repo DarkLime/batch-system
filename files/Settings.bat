@@ -67,12 +67,14 @@ echo.
 echo 1. Network
 echo 2. BatchSystem
 echo 3. About Windows
+echo 4. Time and region
 echo.
-choice /C 123 /N
+choice /C 1234 /N
 set option=%ERRORLEVEL%
 if %option% equ 1 goto network
 if %option% equ 2 goto bs
 if %option% equ 3 goto windows
+if %option% equ 4 goto timeregion
 echo Choice is not valid.
 pause
 goto menu
@@ -299,13 +301,21 @@ echo ABOUT
 echo.
 echo 1- RAM Information
 echo 2- OS Information
-echo 3- Back
+echo 3- User Information
+echo 4- BIOS Information
+echo 5- Manufacturer Information
+echo 6- Processor Information
+echo 7- Back
 echo.
-choice /c 123 /n
+choice /c 1234567 /n
 set win=%ERRORLEVEL%
 if %win% equ 1 goto windows_ram
 if %win% equ 2 goto windows_os
-if %win% equ 3 goto menu
+if %win% equ 3 goto windows_users
+if %win% equ 4 goto windows_bios
+if %win% equ 5 goto windows_manufacturer
+if %win% equ 6 goto windows_cpu
+if %win% equ 7 goto menu
 echo Choice is not valid.
 pause
 goto windows
@@ -313,6 +323,9 @@ goto windows
 :windows_ram
 cls
 echo ABOUT/RAM
+echo.
+systeminfo | findstr /C:"Total Physical Memory"
+systeminfo | findstr /C:"Available Physical Memory"
 echo.
 echo 1- Complete info
 echo 2- Simplified info
@@ -350,13 +363,138 @@ goto windows_ram
 
 :windows_os
 cls
+mode con cols=90 lines=14
 echo ABOUT/Operating System
 echo.
-echo This setting part is not available
-echo on this release.
+systeminfo | findstr /C:"OS Name"
+systeminfo | findstr /C:"OS Version"
+systeminfo | findstr /C:"OS Manufacturer"
+systeminfo | findstr /C:"OS Configuration"
+systeminfo | findstr /C:"OS Build Type"
+systeminfo | findstr /C:"Product ID"
 echo.
-echo Go to GitHub to get the latest release.
-echo Cyanic76/batch-system
+pause
+mode con cols=50 lines=14
+goto windows
+
+:windows_users
+cls
+echo About/Windows User
+echo.
+systeminfo | findstr /C:"Registered Owner"
+systeminfo | findstr /C:"Registered Organization"
+systeminfo | findstr /C:"Host Name"
+systeminfo | findstr /C:"Domain"
 echo.
 pause
 goto windows
+
+:windows_bios
+cls
+echo About/BIOS
+echo.
+systeminfo | findstr /C:"BIOS Version"
+systeminfo | findstr /C:"Boot Device"
+systeminfo | findstr /C:"System Boot Time"
+echo.
+pause
+goto windows
+
+:windows_manufacturer
+cls
+echo About/Manufacturer info
+echo.
+systeminfo | findstr /C:"Original Install Date"
+systeminfo | findstr /C:"System Model"
+systeminfo | findstr /C:"System Manufacturer"
+systeminfo | findstr /C:"System Type"
+echo.
+pause
+goto windows
+
+:windows_cpu
+cls
+mode con cols=55 lines=14
+echo About/Processor (CPU)
+echo.
+systeminfo | findstr /C:"System Type"
+systeminfo | findstr /C:"Processor(s)"
+echo.
+pause
+mode con cols=50 lines=14
+goto windows
+
+:timeregion
+cls
+echo Time and region
+echo.
+echo 1- Time settings
+echo 2- Date settings
+echo 3- View time/date
+echo 4- Region info
+echo 5- Back
+choice /c 12345 /n
+set tr_choice=%ERRORLEVEL%
+if %tr_choice% equ 1 goto timeregion_timeset
+if %tr_choice% equ 2 goto timeregion_dateset
+if %tr_choice% equ 3 goto timeregion_current
+if %tr_choice% equ 4 goto timeregion_region
+if %tr_choice% equ 5 goto menu
+echo Choice is not valid.
+pause
+goto timeregion
+
+:timeregion_timeset
+cls
+echo Time and region/Set time
+echo.
+echo Let the new time empty will
+echo not change it.
+echo.
+time
+cls
+echo We're done setting your computer
+echo time!
+echo.
+echo It is currently %time%.
+pause
+goto timeregion
+
+:timeregion_dateset
+cls
+echo Time and region/Set date
+echo.
+echo Let the new date empty will
+echo not change it.
+echo.
+time
+cls
+echo We're done setting your computer
+echo date!
+echo.
+echo Today is %date%.
+pause
+goto timeregion
+
+:timeregion_current
+cls
+echo Time and region/Current time
+echo.
+echo %time%
+echo %date%
+echo.
+pause
+goto timeregion
+
+:timeregion_region
+cls
+mode con cols=80 lines=14
+echo Time and region/Region info
+echo.
+systeminfo | findstr /C:"System Locale"
+systeminfo | findstr /C:"Input Locale"
+systeminfo | findstr /C:"Time Zone"
+echo.
+pause
+mode con cols=50 lines=14
+goto timeregion
