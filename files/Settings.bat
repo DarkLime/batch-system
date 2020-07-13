@@ -110,7 +110,7 @@ echo Let's get you connected.
 set /p name="Wireless network name (SSID)? "
 cls
 echo Connecting to %name%...
-netsh wlan connect name="%name%"
+netsh wlan connect name="BatchSys_%name%" SSID="%name%"
 pause
 goto menu
 
@@ -467,7 +467,7 @@ echo.
 echo Let the new date empty will
 echo not change it.
 echo.
-time
+date
 cls
 echo We're done setting your computer
 echo date!
