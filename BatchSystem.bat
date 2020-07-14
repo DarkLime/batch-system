@@ -28,8 +28,8 @@ goto err1
 
 :clock
 cls
-echo This does not exist yet.
-pause
+cd files
+Clock.bat
 goto main
 
 :fx
