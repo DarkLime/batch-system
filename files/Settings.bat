@@ -68,16 +68,27 @@ echo 1. Network
 echo 2. BatchSystem
 echo 3. About Windows
 echo 4. Time and region
+echo 5. Back
 echo.
-choice /C 1234 /N
+choice /C 12345 /N
 set option=%ERRORLEVEL%
 if %option% equ 1 goto network
 if %option% equ 2 goto bs
 if %option% equ 3 goto windows
 if %option% equ 4 goto timeregion
+if %option% equ 5 goto exit1
 echo Choice is not valid.
 pause
 goto menu
+
+:exit1
+cls
+echo Exiting...
+rem ID=1
+rem Reason=Switching to another program
+cd ..
+BatchSystem.bat
+exit
 
 :network
 title Network - Windows Settings CLI
@@ -305,9 +316,10 @@ echo 3- User Information
 echo 4- BIOS Information
 echo 5- Manufacturer Information
 echo 6- Processor Information
-echo 7- Back
+echo 7- Check Disk
+echo 8- Back
 echo.
-choice /c 1234567 /n
+choice /c 12345678 /n
 set win=%ERRORLEVEL%
 if %win% equ 1 goto windows_ram
 if %win% equ 2 goto windows_os
@@ -315,7 +327,8 @@ if %win% equ 3 goto windows_users
 if %win% equ 4 goto windows_bios
 if %win% equ 5 goto windows_manufacturer
 if %win% equ 6 goto windows_cpu
-if %win% equ 7 goto menu
+if %win% equ 7 goto windows_cd
+if %win% equ 8 goto menu
 echo Choice is not valid.
 pause
 goto windows
@@ -423,6 +436,43 @@ echo.
 pause
 mode con cols=50 lines=14
 goto windows
+
+:windows_cd
+cls
+echo About/Checking disk
+echo.
+echo Start checking the disk?
+pause
+cls
+echo Generating report, please wait...
+echo.
+echo This step can take few minutes.
+chkdsk > log.txt
+goto windows_cd_done
+
+:windows_cd_done
+cls
+echo About/Checking disk
+echo.
+echo Report successfully generated.
+echo.
+echo 1- Open report
+echo 2- Continue
+choice /c 12 /n
+set windows_cd_choice=%ERRORLEVEL%
+if %windows_cd_choice% equ 1 goto windows_cd_report
+if %windows_cd_choice% equ 2 goto windows
+pause
+goto windows
+
+:windows_cd_report
+cls
+echo About/Checking disk
+echo.
+echo Report opened. Available at log.txt.
+echo Close the report to continue.
+log.txt
+goto windows_cd_done
 
 :timeregion
 cls
