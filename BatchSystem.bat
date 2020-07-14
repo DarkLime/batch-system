@@ -40,8 +40,8 @@ goto main
 
 :calc
 cls
-echo This does not exist yet.
-pause
+cd files
+Calculator.bat
 goto main
 
 :setup
