@@ -2,17 +2,10 @@
 A system being developed on Batch (Command Prompt)
 
 ## Features
-As of `p-20200714-2` release, Batch System includes this:
 
-- A [start menu](https://github.com/Cyanic76/batch-system/blob/master/BatchSystem.bat)
-- [Calculator](https://github.com/Cyanic76/batch-system/blob/master/files/Calculator.bat)
-- [Clock](https://github.com/Cyanic76/batch-system/blob/master/files/Clock.bat)
-- Network, time/date/region settings
-- [Power options](https://github.com/Cyanic76/batch-system/blob/master/files/PowerOptions.bat)
-- [Settings menu](https://github.com/Cyanic76/batch-system/blob/master/files/Settings.bat)
-- View info about your computer hardware & software
+Read [this article](https://github.com/Cyanic76/batch-system/wiki/Features) on the Wiki.
 
-More will be implemented in the future.
+*Note: More will be implemented in the future.*
 
 ## About
 
@@ -22,14 +15,11 @@ The first program to be implemented on that was [Power Options](https://github.c
 
 ## Installation
 
-1. Download the latest [release](https://github.com/Cyanic76/batch-system/releases) files.
-2. Unzip everything wherever you want to.
-3. **Do not remove `files` folder.** All apps (not including Start menu) are stored inside it.
-4. Launch [BatchSystem.bat](https://github.com/Cyanic76/batch-system/blob/master/BatchSystem.bat).
+Read [this article](https://github.com/Cyanic76/batch-system/wiki/Install-Batch-System) on the Wiki.
 
 ## Documentation
 
-Will be soon available.
+The documentation is available [here](https://github.com/Cyanic76/batch-system/wiki).
 
 ## Batch System
 
