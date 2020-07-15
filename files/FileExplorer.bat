@@ -63,11 +63,11 @@ goto fx
 :treefarm
 echo.
 echo Generating tree view...
-tree > tree.txt
+tree > C:\Users\%USERNAME%\Desktop\tree.txt
 echo Done!
 echo Close tree.txt to continue.
-tree.txt
-del /f /a tree.txt
+C:\Users\%USERNAME%\Desktop\tree.txt
+del /f /a C:\Users\%USERNAME%\Desktop\tree.txt
 goto fx
 
 :rmfolder
