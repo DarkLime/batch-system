@@ -9,8 +9,8 @@ rem Main
 cls
 dir
 echo.
-echo 1-Open file / 2-Open folder / 3-Delete file / 4-Back / 5-Exit
-echo 6-Tree / 7-Delete folder / 8-Add folder / 9-Other drives
+echo [1- Open file] [ 2- Open folder ] [3- Remove file] [4- Back] [5- Exit]
+echo [6- Tree view] [7- Remove folder] [8- Create folder] [9- Other drives]
 choice /c 123456789 /n
 set a=%ERRORLEVEL%
 if %a% equ 1 goto openfile
