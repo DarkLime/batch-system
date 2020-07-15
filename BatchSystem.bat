@@ -14,7 +14,7 @@ echo 2. File explorer
 echo 3. Calculator
 echo 4. Settings
 echo 5. Power options
-echo 6. Ping tool
+echo 6. Network tools
 echo 7. Close
 echo.
 choice /C 1234567 /N
