@@ -1,6 +1,6 @@
 title Batch System
 rem Starting...
-mode con cols=35 lines=11
+mode con cols=35 lines=12
 echo off
 goto main
 
@@ -14,35 +14,36 @@ echo 2. File explorer
 echo 3. Calculator
 echo 4. Settings
 echo 5. Power options
-echo 6. Close
+echo 6. Ping tool
+echo 7. Close
 echo.
-choice /C 123456 /N
+choice /C 1234567 /N
 set o=%ERRORLEVEL%
 if %o% equ 1 goto clock
 if %o% equ 2 goto fx
 if %o% equ 3 goto calc
 if %o% equ 4 goto setup
 if %o% equ 5 goto pocli
-if %o% equ 6 goto exit1
-goto err1
-
-:clock
-cls
-cd files
-Clock.bat
-goto main
-
-:fx
-cls
-echo This does not exist yet.
+if %o% equ 6 goto pinger
+if %o% equ 7 goto exit1
+echo Bad choice.
 pause
 goto main
 
+:clock
+cd files
+Clock.bat
+goto exit1
+
+:fx
+cd files
+FileExplorer.bat
+goto exit1
+
 :calc
-cls
 cd files
 Calculator.bat
-goto main
+goto exit1
 
 :setup
 cd files
@@ -54,15 +55,10 @@ cd files
 PowerOptions.bat
 goto exit1
 
-:err1
-cls
-echo ERROR
-echo.
-echo ID=1
-echo Reason=Bad choice. Try again.
-echo.
-pause
-goto main
+:pinger
+cd files
+Ping.bat
+goto exit1
 
 :exit1
 cls
