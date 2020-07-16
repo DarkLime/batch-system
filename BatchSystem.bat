@@ -9,9 +9,9 @@ cls
 echo Batch System
 echo A new batch project by Cyanic76.
 echo.
-echo #===1===#  #=======2=======#  #======3======#  #===04=====#
+echo #===1===#  #=======2=======#  #======3======#  #====04====#
 echo : Clock :  : File explorer :  : Calculator :   : Settings :
-echo #=======#  #===============#  #=============#  # =========#
+echo #=======#  #===============#  #=============#  #==========#
 echo #=======5=======#  #=======6=======#  #==09==#
 echo : Power options :  : Network tools :  : Exit :
 echo #===============#  #===============#  #======#
