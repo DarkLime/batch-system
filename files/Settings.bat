@@ -565,12 +565,14 @@ echo Devices
 echo.
 echo 1- View printers
 echo 2- Change computer name
-echo 3- Back
-choice /c 123 /n
+echo 3- Volume Manager
+echo 4- Back
+choice /c 1234 /n
 set devices_choice=%ERRORLEVEL%
 if %devices_choice% equ 1 goto devices_printers_view
 if %devices_choice% equ 2 goto devices_computer_namechange
-if %devices_choice% equ 3 goto menu
+if %devices_choice% equ 3 goto devices_vm
+if %devices_choice% equ 4 goto menu
 
 :devices_printers_view
 mode con cols=80 lines=20
@@ -614,3 +616,32 @@ echo.
 powershell Rename-Computer -NewName "%devices_computer_namechange_name%"
 pause
 goto devices_computer_namechange
+
+:devices_vm
+cls
+echo Devices/Partition manager
+echo.
+echo 1- View partition list
+echo 2- Create a partition
+echo 3- Back
+choice /c 123 /n
+set devices_vm_choice=%ERRORLEVEL%
+if %devices_vm_choice% equ 1 goto devices_vm_list
+if %devices_vm_choice% equ 2 goto devices_vm_add
+if %devices_vm_choice% equ 3 goto devices
+
+:devices_vm_list
+echo Devices/Partition manager
+echo.
+echo List of partitions
+fsutil fsinfo drives
+echo.
+pause
+goto devices_vm
+
+:devices_vm_add
+echo Create a new partition
+echo.
+echo Will be soon available.
+pause
+goto devices_vm
