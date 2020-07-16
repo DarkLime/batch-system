@@ -1,6 +1,6 @@
 title Windows Settings CLI - Checking for administrator permission...
 rem Made by Cyanic76
-mode con cols=50 lines=14
+mode con cols=50 lines=15
 @echo off
 goto check
 
@@ -21,6 +21,7 @@ echo             Settings
 echo.
 echo.
 echo.          Please  wait
+del /f /a NULL
 powershell -Command "Start-Process Settings.bat -Verb RunAs"
 goto check2
 
@@ -33,6 +34,7 @@ goto menu
 cls
 openfiles > NULL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto menu
+del /f /a NULL
 title Windows Settings - Running as normal user.
 echo Windows 10
 echo Settings CLI
@@ -285,7 +287,9 @@ echo   by  Cyanic76
 echo.
 echo Branch:    master
 echo Version:   prerelease
-echo Build:	    0
+echo.
+echo Licensed to:
+whoami
 echo.
 pause
 goto bs
@@ -309,6 +313,7 @@ goto bs
 :windows
 cls
 echo ABOUT
+ver
 echo.
 echo 1- RAM Information
 echo 2- OS Information
