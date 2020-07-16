@@ -1,6 +1,6 @@
 # Batch System
 A system being developed on Batch (Command Prompt)
-
+![alt text](./cmd_u91MqVJNyB.png)
 ## Features
 
 Read [this article](https://github.com/Cyanic76/batch-system/wiki/Features) on the Wiki.
