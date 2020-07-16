@@ -6,6 +6,7 @@ goto check
 
 :check
 openfiles > NULL 2>&1
+set devices_check=1
 if NOT %ERRORLEVEL% EQU 0 goto afa
 goto menu
 
@@ -21,7 +22,6 @@ echo             Settings
 echo.
 echo.
 echo.          Please  wait
-del /f /a NULL
 powershell -Command "Start-Process Settings.bat -Verb RunAs"
 goto check2
 
@@ -70,15 +70,17 @@ echo 1. Network
 echo 2. BatchSystem
 echo 3. About Windows
 echo 4. Time and region
-echo 5. Back
+echo 5. Devices
+echo 6. Back
 echo.
-choice /C 12345 /N
+choice /C 123456 /N
 set option=%ERRORLEVEL%
 if %option% equ 1 goto network
 if %option% equ 2 goto bs
 if %option% equ 3 goto windows
 if %option% equ 4 goto timeregion
-if %option% equ 5 goto exit1
+if %option% equ 5 goto devices
+if %option% equ 6 goto exit1
 echo Choice is not valid.
 pause
 goto menu
@@ -553,3 +555,62 @@ echo.
 pause
 mode con cols=50 lines=14
 goto timeregion
+
+:devices
+cls
+if %devices_check% equ 1 pause
+cls
+set devices_check=0
+echo Devices
+echo.
+echo 1- View printers
+echo 2- Change computer name
+echo 3- Back
+choice /c 123 /n
+set devices_choice=%ERRORLEVEL%
+if %devices_choice% equ 1 goto devices_printers_view
+if %devices_choice% equ 2 goto devices_computer_namechange
+if %devices_choice% equ 3 goto menu
+
+:devices_printers_view
+mode con cols=80 lines=20
+cls
+echo Devices/Printers
+echo.
+echo All installed printers on this computer.
+echo.
+powershell Get-Printer
+pause
+mode con cols=50 lines=14
+goto devices
+
+:devices_computer_namechange
+cls
+echo Devices/Edit computer name
+echo.
+echo Current computer name:
+hostname
+echo.
+echo 1- Edit
+echo 2- Back
+choice /c 12 /n
+set devices_computer_namechange_choice=%ERRORLEVEL%
+if %devices_computer_namechange_choice% equ 1 goto devices_computer_namechange_ok
+if %devices_computer_namechange_choice% equ 2 goto devices
+
+:devices_computer_namechange_ok
+cls
+echo Devices/Edit computer name
+echo.
+echo Current computer name:
+hostname
+echo.
+echo Provide the new name:
+set /p devices_computer_namechange_name=""
+echo Devices/Edit computer name
+echo.
+echo Look below.
+echo.
+powershell Rename-Computer -NewName "%devices_computer_namechange_name%"
+pause
+goto devices_computer_namechange
