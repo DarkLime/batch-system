@@ -1,6 +1,7 @@
 title Calculator
 rem Starting
 echo off
+mode con cols=35 lines=11
 goto main
 
 :main
