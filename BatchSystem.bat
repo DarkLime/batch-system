@@ -6,12 +6,11 @@ goto main
 
 :main
 cls
-echo Batch System
-echo A new batch project by Cyanic76.
+echo Welcome, %USERNAME%.
 echo.
-echo #===1===#  #=======2=======#  #======3======#  #====04====#
-echo : Clock :  : File explorer :  : Calculator :   : Settings :
-echo #=======#  #===============#  #=============#  #==========#
+echo #===1===#  #=======2=======#  #=====03=====#  #====04====#
+echo : Clock :  : File explorer :  : Calculator :  : Settings :
+echo #=======#  #===============#  #============#  #==========#
 echo #=======5=======#  #=======6=======#  #==09==#
 echo : Power options :  : Network tools :  : Exit :
 echo #===============#  #===============#  #======#
